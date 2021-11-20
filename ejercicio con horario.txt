@@ -1,0 +1,18 @@
+let http = require ("http");
+let moment = require("moment")
+const PORT = 3000;
+
+http.createServer((req, res)=>{
+    let hour = moment().format("HH");
+    let sms = "";
+    if(hour >= 6  && hour <=12){
+        sms = "Buenos Dias"
+    }else if(hour >= 13  && hour <=19){
+        sms = "Buenas Tardes"
+    }else{
+        sms= "Buenas noches"
+    }
+    res.end(`${sms}`)
+}).listen(PORT, ()=>{
+    console.log(`Mi servidor escuchando desde http://localhost:${PORT}`)
+})
